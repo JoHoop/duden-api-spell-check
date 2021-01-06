@@ -3,10 +3,11 @@ div.DraftEditor-root {
   border-radius: 4px;
   height: 200px;
   width: 300px;
-  overflow-y: auto;
+  overflow-y: hidden;
 }
 
 div.DraftEditor-editorContainer1,
 div.public-DraftEditor-content {
   height: 100%;
+  padding: 15px;
 }
