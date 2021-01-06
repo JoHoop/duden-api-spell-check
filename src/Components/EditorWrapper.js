@@ -1,5 +1,5 @@
 import React from "react";
-import { Editor, EditorState } from "draft-js";
+import { Editor, EditorState, ContentState } from "draft-js";
 import "draft-js/dist/Draft.css";
 import "./EditorWrapper.css";
 
@@ -17,7 +17,11 @@ const getCurrentLetter = (editorState) => {
 
 export const EditorWrapper = () => {
   const [editorState, setEditorState] = React.useState(
-    EditorState.createEmpty()
+    EditorState.createWithContent(
+      ContentState.createFromText(
+        "Weit hinten, hinter den Wortbergen, fern der Länder Vokalen und Konsonanten leben die weiten Blindtexte. Abgeschieden wohnen sie in Buchstabhausen an der Küste der Semantic."
+      )
+    )
   );
 
   const onChange = (newEditorState) => {
