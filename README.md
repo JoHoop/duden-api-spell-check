@@ -1,8 +1,10 @@
 # duden-api-spell-check (WIP)
 
-React Web App to check spelling of German text with Duden API
+React Web App to check spelling of German text with Duden API.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+This project is deployed at [duden-api-spell-check.vercel.app](https://duden-api-spell-check.vercel.app "Production Deployment")
 
 ## Available Scripts
 
