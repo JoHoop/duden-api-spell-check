@@ -1,6 +1,7 @@
 import React from "react";
 import { Editor, EditorState } from "draft-js";
 import "draft-js/dist/Draft.css";
+import "./EditorWrapper.css";
 
 const getCurrentBlock = (editorState) => {
   const currentSelection = editorState.getSelection();
