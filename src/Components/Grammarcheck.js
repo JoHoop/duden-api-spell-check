@@ -1,20 +1,19 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { TextareaAutosize } from "@material-ui/core";
 import { Button } from "@material-ui/core";
+import { EditorWrapper } from "./EditorWrapper";
 
 export const Grammarcheck = () => {
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   const [inputValue, setInputValue] = useState(
     "Weit hinten, hinter den Wortbergen, fern der Länder Vokalen und Konsonanten leben die weiten Blindtexte. Abgeschieden wohnen sie in Buchstabhausen an der Küste der Semantic."
   );
 
-  const [textValue, setTextValue] = useState(
-    "Weit hinten, hinter den Wortbergen, fern der Länder Vokalen und Konsonanten leben die weiten Blindtexte. Abgeschieden wohnen sie in Buchstabhausen an der Küste der Semantic."
-  );
+  const onChange = (evt) => setInputValue(evt.target.value);
 
   const raw = JSON.stringify({
-    text: textValue,
+    text: inputValue,
   });
   const requestOptions = {
     method: "POST",
@@ -25,7 +24,8 @@ export const Grammarcheck = () => {
     redirect: "follow",
   };
 
-  useEffect(() => {
+  const checkSpelling = () => {
+    setIsLoading(true);
     fetch(
       `https://mentor.duden.de/api/grammarcheck?_format=json`,
       requestOptions
@@ -36,23 +36,13 @@ export const Grammarcheck = () => {
         setIsLoading(false);
       })
       .catch((error) => console.log(error));
-  }, [textValue]);
+  };
 
   return (
     <>
-      <TextareaAutosize
-        rowsMax={10}
-        placeholder="Enter text"
-        value={inputValue}
-        onChange={(e) => setInputValue(e.target.value)}
-      />
-      <Button
-        variant="outlined"
-        color="primary"
-        onClick={() => {
-          setTextValue(inputValue);
-        }}
-      >
+      <EditorWrapper />
+
+      <Button variant="outlined" color="primary" onClick={checkSpelling}>
         {isLoading ? "Checking spelling" : "Check spelling"}
       </Button>
     </>
