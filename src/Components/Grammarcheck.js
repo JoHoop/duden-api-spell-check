@@ -1,18 +1,12 @@
 import React, { useState } from "react";
 import { Button } from "@material-ui/core";
-import { EditorWrapper } from "./EditorWrapper";
+import { StateProvider } from "./StateProvider";
 
 export const GrammarCheck = () => {
   const [isLoading, setIsLoading] = useState(false);
-
-  const [inputValue, setInputValue] = useState(
-    "Weit hinten, hinter den Wortbergen, fern der Länder Vokalen und Konsonanten leben die weiten Blindtexte. Abgeschieden wohnen sie in Buchstabhausen an der Küste der Semantic."
-  );
-
-  const onChange = (evt) => setInputValue(evt.target.value);
-
   const raw = JSON.stringify({
-    text: inputValue,
+    text:
+      "Weit hinten, hinter den Wortbergen, fern der Länder Vokalen und Konsonanten leben die weiten Blindtexte. Abgeschieden wohnen sie in Buchstabhausen an der Küste der Semantic.",
   });
   const requestOptions = {
     method: "POST",
@@ -39,9 +33,9 @@ export const GrammarCheck = () => {
 
   return (
     <>
-      <EditorWrapper />
+      <StateProvider />
 
-      <Button variant="outlined" color="primary" onClick={checkSpelling}>
+      <Button variant="outlined" color="primary">
         {isLoading ? "Checking spelling" : "Check spelling"}
       </Button>
     </>
