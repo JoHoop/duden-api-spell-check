@@ -102,20 +102,18 @@ export const GrammarCheck = () => {
   const Highlight = ({ children, highlightIndex }) => (
     <Tooltip
       title={
-        (
-          <React.Fragment>
-            <Typography color="primary" variant="h6">
-              {proposals[highlightIndex]}
-            </Typography>
-            <Typography color="inherit" variant="body2">
-              {errorMessages[highlightIndex]}
-            </Typography>
-          </React.Fragment>
-        ) ||
-        "Diese Schreibweise ist unbekannt. Bitte überprüfen Sie die Rechtschreibung dieses Wortes"
+        <React.Fragment>
+          <Typography color="primary" variant="h6">
+            {proposals[highlightIndex]}
+          </Typography>
+          <Typography color="inherit" variant="body2">
+            {errorMessages[highlightIndex]}
+          </Typography>
+        </React.Fragment>
       }
-      interactive
       placement="top"
+      enterTouchDelay="50"
+      interactive
     >
       <span className={classes.error}>{children}</span>
     </Tooltip>
