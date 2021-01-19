@@ -11,6 +11,10 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     minHeight: "100vh",
   },
+  main: {
+    marginTop: theme.spacing(8),
+    marginBottom: theme.spacing(2),
+  },
 }));
 
 export const HomePage = () => {
@@ -19,7 +23,7 @@ export const HomePage = () => {
   return (
     <div className={classes.root}>
       <Header />
-      <Container maxWidth="md">
+      <Container maxWidth="md" component="main" className={classes.main}>
         <GrammarCheck />
       </Container>
       <Footer />

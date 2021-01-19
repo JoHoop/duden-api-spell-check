@@ -1,10 +1,5 @@
 import React, { useState } from "react";
-import {
-  Button,
-  Box,
-  TextareaAutosize,
-  LinearProgress,
-} from "@material-ui/core";
+import { Button, TextareaAutosize, LinearProgress } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import Highlighter from "react-highlight-words";
 import "./GrammarCheck.css";
@@ -23,6 +18,8 @@ const useStyles = makeStyles({
     fontWeight: "400",
     textAlign: "start",
     lineHeight: "23px",
+    width: "100%",
+    resize: "none",
   },
 });
 
@@ -92,14 +89,14 @@ export const GrammarCheck = () => {
         {isLoading ? "Checking spelling" : "Check spelling"}
       </Button>
 
-      <Box component="span" m={1}>
+      <div className={classes.textField}>
         <Highlighter
           searchWords={spellErrors}
           autoEscape={true}
           textToHighlight={inputText}
           highlightTag={Highlight}
         />
-      </Box>
+      </div>
     </>
   );
 };
