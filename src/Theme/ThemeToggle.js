@@ -32,9 +32,9 @@ export const ThemeToggle = () => {
         className={classes.iconButton}
       >
         {theme === "light" ? (
-          <Brightness4Icon className={classes.icon} />
-        ) : (
           <Brightness7Icon className={classes.icon} />
+        ) : (
+          <Brightness4Icon className={classes.icon} />
         )}
       </IconButton>
     </Tooltip>
