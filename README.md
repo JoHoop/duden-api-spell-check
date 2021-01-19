@@ -1,10 +1,12 @@
 # [duden-api-spell-check](https://duden-api-spell-check.vercel.app)
 
-React Web App to check spelling of German text with the inofficial Duden Mentor API.
+React Web App to check spelling and grammar of German text using the inofficial Duden Mentor API.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and [Material-UI](https://material-ui.com).
 
 This project is deployed at [duden-api-spell-check.vercel.app](https://duden-api-spell-check.vercel.app "Production Deployment") with vercel.com
+
+![Screenshot](/screenshot.png?raw=true)
 
 ## Available Scripts
 
