@@ -44,6 +44,24 @@ export const DarkTheme = responsiveFontSizes(
           },
         },
       },
+      MuiTooltip: {
+        tooltip: {
+          color: white,
+          backgroundColor: "rgb(16,31,31)",
+          background: "rgba(0, 0, 0, 0)",
+          padding: "15px",
+          border: "1px solid rgba(0, 191, 191, 0.5)",
+          borderRadius: "4px",
+          overflowY: "hidden",
+          fontFamily: "'Roboto','Helvetica','Arial',sans-serif",
+          fontSize: "16px",
+          display: "block",
+          fontWeight: "400",
+          textAlign: "start",
+          lineHeight: "23px",
+          resize: "none",
+        },
+      },
     },
   })
 );
