@@ -40,7 +40,7 @@ export const GrammarCheck = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   const [inputText, setInputText] = useState(
-    "Weit hinten, hinter den Wortbergen, fern der Länder Vokalen und Konsonanten leben die weiten Blindtexte. Abgeschieden wohnen sie in Buchstabhausen an der Küste der Semantic."
+    "Er hörte leise Schritte hinter sich. Das bedeutete nichts gutes. Wer würde ihm schon folgen, spät in der Nacht und dazu noch in dieser engen Gasse mitten im übel beleumundeten Hafenviertel? Gerade jetzt, wo er das Ding seines Lebens gedreht hatte, und mit der Beute verschwinden wollte! Hatte einer seiner zahlosen Kollegen dieselbe Idee gehabt, ihn beobachtet und abgewartet um ihn nun um die Früchte seiner Arbeit zu erleichtern?"
   );
 
   const [errorWords, setErrorWords] = useState([]);
