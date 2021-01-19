@@ -71,7 +71,9 @@ export const GrammarCheck = () => {
           ]);
           setErrorMessages((errorMessages) => [
             ...errorMessages,
-            spellAdvice.errorMessage,
+            `Vorschläge: ${spellAdvice.proposals.join(", ")} (${
+              spellAdvice.errorMessage
+            })`,
           ]);
         });
 

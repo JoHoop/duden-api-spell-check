@@ -46,6 +46,7 @@ export const DarkTheme = responsiveFontSizes(
       },
       MuiTooltip: {
         tooltip: {
+          maxWidth: 220,
           color: white,
           backgroundColor: "rgb(16,31,31)",
           background: "rgba(0, 0, 0, 0)",
