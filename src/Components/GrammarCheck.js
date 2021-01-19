@@ -5,14 +5,14 @@ import { Button } from "@material-ui/core";
 export const GrammarCheck = () => {
   const [isLoading, setIsLoading] = useState(false);
 
-  const [inputValue, setInputValue] = useState(
+  const [inputText, setInputText] = useState(
     "Weit hinten, hinter den Wortbergen, fern der Länder Vokalen und Konsonanten leben die weiten Blindtexte. Abgeschieden wohnen sie in Buchstabhausen an der Küste der Semantic."
   );
 
-  const onChange = (evt) => setInputValue(evt.target.value);
+  const onChange = (evt) => setInputText(evt.target.value);
 
   const raw = JSON.stringify({
-    text: inputValue,
+    text: inputText,
   });
   const requestOptions = {
     method: "POST",
@@ -39,7 +39,12 @@ export const GrammarCheck = () => {
 
   return (
     <>
-      <TextareaAutosize />
+      <TextareaAutosize
+        rowsMax={10}
+        placeholder="Enter text"
+        value={inputText}
+        onChange={onChange}
+      />
 
       <Button variant="outlined" color="primary" onClick={checkSpelling}>
         {isLoading ? "Checking spelling" : "Check spelling"}
