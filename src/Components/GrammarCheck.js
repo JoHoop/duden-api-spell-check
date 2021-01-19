@@ -90,8 +90,9 @@ export const GrammarCheck = () => {
         errorMessages[highlightIndex] ||
         "Diese Schreibweise ist unbekannt. Bitte überprüfen Sie die Rechtschreibung dieses Wortes"
       }
-      interactive
       placement="top"
+      interactive
+      disableFocusListener
     >
       <span className="spell error">{children}</span>
     </Tooltip>
