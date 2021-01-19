@@ -5,10 +5,10 @@ import {
   LinearProgress,
   Box,
   Tooltip,
+  Typography,
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import Highlighter from "react-highlight-words";
-import "./GrammarCheck.css";
 
 const useStyles = makeStyles({
   textField: {
@@ -27,6 +27,15 @@ const useStyles = makeStyles({
     width: "100%",
     resize: "none",
   },
+  spell: {
+    borderRadius: "3px",
+    display: "inline-block",
+    margin: "0 -0.125em",
+    padding: "0 0.125em",
+  },
+  "spell.error": {
+    backgroundColor: "#dc322f",
+  },
 });
 
 export const GrammarCheck = () => {
@@ -38,8 +47,14 @@ export const GrammarCheck = () => {
 
   const [errorWords, setErrorWords] = useState([]);
   const [errorMessages, setErrorMessages] = useState([]);
+  const [proposals, setProposals] = useState([]);
 
-  const onChange = (evt) => setInputText(evt.target.value);
+  const onChange = (evt) => {
+    setInputText(evt.target.value);
+    setErrorWords([]);
+    setErrorMessages([]);
+    setProposals([]);
+  };
 
   const raw = JSON.stringify({
     text: inputText,
@@ -71,9 +86,11 @@ export const GrammarCheck = () => {
           ]);
           setErrorMessages((errorMessages) => [
             ...errorMessages,
-            `Vorschläge: ${spellAdvice.proposals.join(", ")} (${
-              spellAdvice.errorMessage
-            })`,
+            spellAdvice.label || spellAdvice.errorMessage,
+          ]);
+          setProposals((proposals) => [
+            ...proposals,
+            spellAdvice.proposals.join(", "),
           ]);
         });
 
@@ -87,12 +104,20 @@ export const GrammarCheck = () => {
   const Highlight = ({ children, highlightIndex }) => (
     <Tooltip
       title={
-        errorMessages[highlightIndex] ||
+        (
+          <React.Fragment>
+            <Typography color="inherit" variant="body2">
+              {errorMessages[highlightIndex]}
+            </Typography>
+            <Typography color="primary" variant="h6">
+              {proposals[highlightIndex]}
+            </Typography>
+          </React.Fragment>
+        ) ||
         "Diese Schreibweise ist unbekannt. Bitte überprüfen Sie die Rechtschreibung dieses Wortes"
       }
-      placement="top"
       interactive
-      disableFocusListener
+      placement="top"
     >
       <span className="spell error">{children}</span>
     </Tooltip>
