@@ -3,6 +3,7 @@ import { TextareaAutosize } from "@material-ui/core";
 import { Button } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import Highlighter from "react-highlight-words";
+import "./GrammarCheck.css";
 
 const useStyles = makeStyles({
   textField: {
@@ -69,6 +70,10 @@ export const GrammarCheck = () => {
 
   const classes = useStyles();
 
+  const Highlight = ({ children, highlightIndex }) => (
+    <span class="spell error">{children}</span>
+  );
+
   return (
     <>
       <TextareaAutosize
@@ -83,10 +88,10 @@ export const GrammarCheck = () => {
       </Button>
 
       <Highlighter
-        highlightClassName="SpellError"
         searchWords={spellErrors}
         autoEscape={true}
         textToHighlight={inputText}
+        highlightTag={Highlight}
       />
     </>
   );
