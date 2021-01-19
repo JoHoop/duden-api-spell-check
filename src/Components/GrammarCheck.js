@@ -3,7 +3,7 @@ import { TextareaAutosize } from "@material-ui/core";
 import { Button } from "@material-ui/core";
 import { EditorWrapper } from "./EditorWrapper";
 
-export const Grammarcheck = () => {
+export const GrammarCheck = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   const [inputValue, setInputValue] = useState(
