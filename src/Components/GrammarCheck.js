@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { TextareaAutosize } from "@material-ui/core";
 import { Button } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
+import Highlighter from "react-highlight-words";
 
 const useStyles = makeStyles({
   textField: {
@@ -26,7 +27,8 @@ export const GrammarCheck = () => {
   const [inputText, setInputText] = useState(
     "Weit hinten, hinter den Wortbergen, fern der Länder Vokalen und Konsonanten leben die weiten Blindtexte. Abgeschieden wohnen sie in Buchstabhausen an der Küste der Semantic."
   );
-  const [outputText, setOutputText] = useState(inputText);
+
+  const [spellErrors, setSpellErrors] = useState([]);
 
   const onChange = (evt) => setInputText(evt.target.value);
 
@@ -54,12 +56,10 @@ export const GrammarCheck = () => {
         console.log(result.data);
 
         result.data.spellAdvices.forEach((spellAdvice) => {
-          let checkedText =
-            outputText.substring(0, spellAdvice.offset) +
-            "Semantik" +
-            outputText.substring(spellAdvice.offset + spellAdvice.length);
-
-          setOutputText(checkedText);
+          setSpellErrors((spellErrors) => [
+            ...spellErrors,
+            spellAdvice.originalError,
+          ]);
         });
 
         setIsLoading(false);
@@ -78,17 +78,15 @@ export const GrammarCheck = () => {
         onChange={onChange}
         className={classes.textField}
       />
-
       <Button variant="outlined" color="primary" onClick={checkSpelling}>
         {isLoading ? "Checking spelling" : "Check spelling"}
       </Button>
 
-      <TextareaAutosize
-        disabled
-        rowsMin={10}
-        placeholder="Enter text"
-        value={outputText}
-        className={classes.textField}
+      <Highlighter
+        highlightClassName="SpellError"
+        searchWords={spellErrors}
+        autoEscape={true}
+        textToHighlight={inputText}
       />
     </>
   );
