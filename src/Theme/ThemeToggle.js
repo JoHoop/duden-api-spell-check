@@ -5,7 +5,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Brightness4Icon from "@material-ui/icons/Brightness4";
 import Brightness7Icon from "@material-ui/icons/Brightness7";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   iconButton: {
     height: "2.5rem",
     width: "2.5rem",
