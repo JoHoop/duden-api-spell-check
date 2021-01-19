@@ -26,6 +26,7 @@ export const GrammarCheck = () => {
   const [inputText, setInputText] = useState(
     "Weit hinten, hinter den Wortbergen, fern der Länder Vokalen und Konsonanten leben die weiten Blindtexte. Abgeschieden wohnen sie in Buchstabhausen an der Küste der Semantic."
   );
+  const [outputText, setOutputText] = useState(inputText);
 
   const onChange = (evt) => setInputText(evt.target.value);
 
@@ -43,6 +44,7 @@ export const GrammarCheck = () => {
 
   const checkSpelling = () => {
     setIsLoading(true);
+
     fetch(
       `https://mentor.duden.de/api/grammarcheck?_format=json`,
       requestOptions
@@ -50,6 +52,16 @@ export const GrammarCheck = () => {
       .then((response) => response.json())
       .then((result) => {
         console.log(result.data);
+
+        result.data.spellAdvices.forEach((spellAdvice) => {
+          let checkedText =
+            outputText.substring(0, spellAdvice.offset) +
+            "Semantik" +
+            outputText.substring(spellAdvice.offset + spellAdvice.length);
+
+          setOutputText(checkedText);
+        });
+
         setIsLoading(false);
       })
       .catch((error) => console.log(error));
@@ -61,7 +73,7 @@ export const GrammarCheck = () => {
     <>
       <TextareaAutosize
         rowsMin={10}
-        placeholder="Enter text"
+        placeholder=""
         value={inputText}
         onChange={onChange}
         className={classes.textField}
@@ -70,6 +82,14 @@ export const GrammarCheck = () => {
       <Button variant="outlined" color="primary" onClick={checkSpelling}>
         {isLoading ? "Checking spelling" : "Check spelling"}
       </Button>
+
+      <TextareaAutosize
+        disabled
+        rowsMin={10}
+        placeholder="Enter text"
+        value={outputText}
+        className={classes.textField}
+      />
     </>
   );
 };
