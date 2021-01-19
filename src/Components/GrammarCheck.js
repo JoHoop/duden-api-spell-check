@@ -29,10 +29,10 @@ const useStyles = makeStyles((theme) => ({
   },
   error: {
     borderRadius: "3px",
+    border: `1px solid ${theme.palette.secondary.main}`,
     display: "inline-block",
     margin: "0 -0.1em",
     padding: "0 0.1em",
-    backgroundColor: theme.palette.secondary.main,
   },
 }));
 
