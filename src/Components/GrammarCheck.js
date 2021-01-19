@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { TextareaAutosize } from "@material-ui/core";
 import { Button } from "@material-ui/core";
-import { EditorWrapper } from "./EditorWrapper";
 
 export const GrammarCheck = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -40,7 +39,7 @@ export const GrammarCheck = () => {
 
   return (
     <>
-      <EditorWrapper />
+      <TextareaAutosize />
 
       <Button variant="outlined" color="primary" onClick={checkSpelling}>
         {isLoading ? "Checking spelling" : "Check spelling"}
