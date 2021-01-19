@@ -11,12 +11,12 @@ const useStyles = makeStyles({
     border: "1px solid rgba(0, 191, 191, 0.5)",
     borderRadius: "4px",
     overflowY: "hidden",
-    fontFamily: "'Roboto', 'Helvetica', 'Arial', sans-serif",
-    fontSize: "14px",
+    fontFamily: "'Roboto','Helvetica','Arial',sans-serif",
+    fontSize: "16px",
     display: "block",
     fontWeight: "400",
     textAlign: "start",
-    lineHeight: "20px",
+    lineHeight: "23px",
   },
 });
 
