@@ -10,10 +10,10 @@ import {
 import { makeStyles } from "@material-ui/core/styles";
 import Highlighter from "react-highlight-words";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   textField: {
     background: "rgba(0, 0, 0, 0)",
-    color: "rgb(250, 250, 250)",
+    color: theme.palette.color,
     padding: "15px",
     border: "1px solid rgba(0, 191, 191, 0.5)",
     borderRadius: "4px",
@@ -27,16 +27,14 @@ const useStyles = makeStyles({
     width: "100%",
     resize: "none",
   },
-  spell: {
+  error: {
     borderRadius: "3px",
     display: "inline-block",
-    margin: "0 -0.125em",
-    padding: "0 0.125em",
+    margin: "0 -0.1em",
+    padding: "0 0.1em",
+    backgroundColor: theme.palette.secondary.main,
   },
-  "spell.error": {
-    backgroundColor: "#dc322f",
-  },
-});
+}));
 
 export const GrammarCheck = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -106,11 +104,11 @@ export const GrammarCheck = () => {
       title={
         (
           <React.Fragment>
-            <Typography color="inherit" variant="body2">
-              {errorMessages[highlightIndex]}
-            </Typography>
             <Typography color="primary" variant="h6">
               {proposals[highlightIndex]}
+            </Typography>
+            <Typography color="inherit" variant="body2">
+              {errorMessages[highlightIndex]}
             </Typography>
           </React.Fragment>
         ) ||
@@ -119,7 +117,7 @@ export const GrammarCheck = () => {
       interactive
       placement="top"
     >
-      <span className="spell error">{children}</span>
+      <span className={classes.error}>{children}</span>
     </Tooltip>
   );
 
