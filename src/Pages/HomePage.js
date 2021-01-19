@@ -6,7 +6,7 @@ import { Container } from "@material-ui/core";
 import { GrammarCheck } from "../Components/GrammarCheck";
 
 const useStyles = makeStyles((theme) => ({
-  homePage: {
+  root: {
     display: "flex",
     flexDirection: "column",
     minHeight: "100vh",
@@ -17,7 +17,7 @@ export const HomePage = () => {
   const classes = useStyles();
 
   return (
-    <div className={classes.homePage}>
+    <div className={classes.root}>
       <Header />
       <Container maxWidth="md">
         <GrammarCheck />
