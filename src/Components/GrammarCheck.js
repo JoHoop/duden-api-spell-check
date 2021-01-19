@@ -4,6 +4,7 @@ import {
   TextareaAutosize,
   LinearProgress,
   Box,
+  Tooltip,
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import Highlighter from "react-highlight-words";
@@ -35,7 +36,8 @@ export const GrammarCheck = () => {
     "Weit hinten, hinter den Wortbergen, fern der Länder Vokalen und Konsonanten leben die weiten Blindtexte. Abgeschieden wohnen sie in Buchstabhausen an der Küste der Semantic."
   );
 
-  const [spellErrors, setSpellErrors] = useState([]);
+  const [errorWords, setErrorWords] = useState([]);
+  const [errorMessages, setErrorMessages] = useState([]);
 
   const onChange = (evt) => setInputText(evt.target.value);
 
@@ -63,9 +65,13 @@ export const GrammarCheck = () => {
         console.log(result.data);
 
         result.data.spellAdvices.forEach((spellAdvice) => {
-          setSpellErrors((spellErrors) => [
-            ...spellErrors,
+          setErrorWords((errorWords) => [
+            ...errorWords,
             spellAdvice.originalError,
+          ]);
+          setErrorMessages((errorMessages) => [
+            ...errorMessages,
+            spellAdvice.errorMessage,
           ]);
         });
 
@@ -77,7 +83,16 @@ export const GrammarCheck = () => {
   const classes = useStyles();
 
   const Highlight = ({ children, highlightIndex }) => (
-    <span class="spell error">{children}</span>
+    <Tooltip
+      title={
+        errorMessages[highlightIndex] ||
+        "Diese Schreibweise ist unbekannt. Bitte überprüfen Sie die Rechtschreibung dieses Wortes"
+      }
+      interactive
+      placement="top"
+    >
+      <span className="spell error">{children}</span>
+    </Tooltip>
   );
 
   return (
@@ -104,7 +119,7 @@ export const GrammarCheck = () => {
 
       <div className={classes.textField}>
         <Highlighter
-          searchWords={spellErrors}
+          searchWords={errorWords}
           autoEscape={true}
           textToHighlight={inputText}
           highlightTag={Highlight}
