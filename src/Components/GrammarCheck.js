@@ -1,5 +1,10 @@
 import React, { useState } from "react";
-import { Button, TextareaAutosize, LinearProgress } from "@material-ui/core";
+import {
+  Button,
+  TextareaAutosize,
+  LinearProgress,
+  Box,
+} from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import Highlighter from "react-highlight-words";
 import "./GrammarCheck.css";
@@ -78,16 +83,24 @@ export const GrammarCheck = () => {
   return (
     <>
       <TextareaAutosize
-        rowsMin={10}
-        placeholder=""
+        rowsMin={5}
+        placeholder="Input"
         value={inputText}
         onChange={onChange}
         className={classes.textField}
       />
-      {isLoading && <LinearProgress />}
+
+      <Box mt={2} />
+
       <Button variant="outlined" color="primary" onClick={checkSpelling}>
         {isLoading ? "Checking spelling" : "Check spelling"}
       </Button>
+
+      <Box mt={2} />
+
+      {isLoading && <LinearProgress />}
+
+      <Box mt={2} />
 
       <div className={classes.textField}>
         <Highlighter

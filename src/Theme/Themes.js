@@ -11,9 +11,6 @@ export const LightTheme = responsiveFontSizes(
       primary: {
         main: primary,
       },
-      secondary: {
-        main: primary,
-      },
       background: white,
     },
     overrides: {
@@ -34,9 +31,6 @@ export const DarkTheme = responsiveFontSizes(
     palette: {
       type: "dark",
       primary: {
-        main: primary,
-      },
-      secondary: {
         main: primary,
       },
       background: black,
