@@ -6,6 +6,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 This project is deployed at [duden-api-spell-check.vercel.app](https://duden-api-spell-check.vercel.app "Production Deployment") with vercel.com
 
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/git?s=https%3A%2F%2Fgithub.com%2Fjohoop%2Fduden-api-spell-check&c=1)
+
 ![Screenshot](/screenshot.png?raw=true)
 
 ## Available Scripts
