@@ -127,6 +127,7 @@ export const GrammarCheck = () => {
         value={inputText}
         onChange={onChange}
         className={classes.textField}
+        maxLength={800}
       />
 
       <Box mt={2} />
