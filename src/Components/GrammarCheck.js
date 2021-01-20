@@ -112,7 +112,7 @@ export const GrammarCheck = () => {
         </React.Fragment>
       }
       placement="top"
-      enterTouchDelay="0"
+      enterTouchDelay={0}
       interactive
     >
       <span className={classes.error}>{children}</span>
